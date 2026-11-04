@@ -1,0 +1,513 @@
+:root {
+    --bg: #eef3f7;
+    --surface: #ffffff;
+    --text: #2c3e50;
+    --muted: #6b7c8c;
+    --primary: #5b8db8;
+    --primary-dark: #467396;
+    --line: #d9e2ea;
+    --ok-bg: #d8f0e0;
+    --ok-line: #4caf7a;
+    --bad-bg: #f9d9d9;
+    --bad-line: #e06666;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Tajawal", Tahoma, sans-serif;
+    line-height: 1.7;
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin: 0 0 .25rem;
+}
+
+.muted {
+    color: var(--muted);
+    margin-top: 0;
+}
+
+.wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 3rem;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin: 1rem auto;
+}
+
+.narrow {
+    max-width: 420px;
+    margin-top: 12vh;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .75rem 1.25rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+}
+
+label {
+    display: block;
+    margin: .9rem 0 .3rem;
+    font-weight: 600;
+}
+
+input[type=text],
+input[type=tel],
+input[type=password],
+input[type=number],
+textarea {
+    width: 100%;
+    padding: .65rem .8rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font: inherit;
+    background: #fafcfd;
+    color: inherit;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+input:focus,
+textarea:focus,
+button:focus-visible {
+    outline: 3px solid #b9d3ea;
+    outline-offset: 1px;
+}
+
+.btn {
+    font: inherit;
+    font-weight: 600;
+    border: 0;
+    border-radius: 10px;
+    padding: .6rem 1.2rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.btn.primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn.primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn.ghost {
+    background: #e4ecf3;
+    color: var(--text);
+}
+
+.btn.danger {
+    background: var(--bad-bg);
+    color: #a33;
+    margin-top: 0;
+}
+
+.btn.big {
+    padding: .8rem 1.8rem;
+    font-size: 1.05rem;
+}
+
+.link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--primary-dark);
+}
+
+.msg {
+    min-height: 1.4rem;
+    margin: .7rem 0 0;
+    color: var(--bad-line);
+}
+
+.msg.good {
+    color: #2e8b57;
+}
+
+.center {
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    gap: .75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/* Quiz */
+
+.q {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.q h3 {
+    margin: 0 0 .7rem;
+    font-size: 1.05rem;
+}
+
+.opt {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .6rem .8rem;
+    margin: .4rem 0;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    cursor: pointer;
+    background: #fafcfd;
+}
+
+.opt:hover {
+    border-color: var(--primary);
+}
+
+.opt input {
+    accent-color: var(--primary);
+}
+
+.opt .mark {
+    margin-inline-start: auto;
+    font-weight: 700;
+}
+
+.opt.correct {
+    background: var(--ok-bg);
+    border-color: var(--ok-line);
+}
+
+.opt.correct .mark {
+    color: #25804f;
+}
+
+.opt.wrong {
+    background: var(--bad-bg);
+    border-color: var(--bad-line);
+}
+
+.opt.wrong .mark {
+    color: #c0392b;
+}
+
+.graded .opt {
+    cursor: default;
+}
+
+.result {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin-bottom: 1rem;
+}
+
+
+/* Admin */
+
+.ed-opt {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    margin: .4rem 0;
+}
+
+.ed-opt input[type=text] {
+    flex: 1;
+}
+
+.ed-opt input[type=radio] {
+    accent-color: var(--ok-line);
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.ed-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.small {
+    font-size: .9rem;
+    color: var(--muted);
+}
+
+
+/* ===== ضيف الكود ده في آخر ملف style.css ===== */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+
+.stat {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: .9rem;
+    text-align: center;
+    color: var(--muted);
+}
+
+.stat b {
+    display: block;
+    font-size: 1.7rem;
+    color: var(--primary-dark);
+}
+
+.sec-title {
+    margin: 1.6rem 0 .6rem;
+    font-size: 1.15rem;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .6rem;
+    flex-wrap: wrap;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: .7rem 1rem;
+    margin-bottom: .5rem;
+}
+
+.row .btn {
+    margin-top: 0;
+    padding: .4rem .9rem;
+}
+
+.btn.ok {
+    background: var(--ok-bg);
+    color: #25804f;
+}
+
+.stu {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin-bottom: .5rem;
+}
+
+.stu summary {
+    cursor: pointer;
+    padding: .7rem 1rem;
+    display: flex;
+    gap: .8rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.badge {
+    margin-inline-start: auto;
+    background: #e4ecf3;
+    border-radius: 20px;
+    padding: .1rem .8rem;
+    font-size: .9rem;
+}
+
+.att {
+    margin: 0;
+    padding: .2rem 2.2rem .8rem;
+}
+
+.att li {
+    padding: .3rem 0;
+    border-top: 1px dashed var(--line);
+}
+
+/* ===== النسخة الجديدة: الامتحانات والتحليل ===== */
+
+select {
+    width: 100%;
+    padding: .65rem .8rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font: inherit;
+    background: #fafcfd;
+    color: inherit;
+}
+
+.exam-card {
+    max-width: 760px;
+}
+
+.exam-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .8rem;
+    flex-wrap: wrap;
+}
+
+.exam-name {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.code-line {
+    display: flex;
+    gap: .5rem;
+}
+
+.code-line input {
+    flex: 1;
+}
+
+.set-row {
+    display: flex;
+    gap: .8rem;
+    flex-wrap: wrap;
+    padding: .6rem 1rem 1rem;
+    margin: 0 0 .5rem;
+}
+
+.set-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.ana {
+    margin-top: .7rem;
+    font-size: .95rem;
+    color: var(--muted);
+}
+
+.ana.hard {
+    color: #c0392b;
+}
+
+.bar {
+    height: 8px;
+    background: #e4ecf3;
+    border-radius: 8px;
+    margin-top: .35rem;
+    overflow: hidden;
+}
+
+.bar i {
+    display: block;
+    height: 100%;
+    background: var(--bad-line);
+}
+
+.grp {
+    padding: 0 1rem;
+}
+
+.grp-title {
+    font-weight: 700;
+    padding-top: .5rem;
+}
+
+.wrong-line {
+    color: #c0392b;
+    font-size: .95rem;
+}
+
+.right-line {
+    color: #25804f;
+    font-size: .95rem;
+}
+
+
+/* ===== صور الأسئلة ===== */
+
+.q-flex {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.q-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.q-img {
+    width: 140px;
+    max-width: 35%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+}
+
+.img-ed {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    flex-wrap: wrap;
+}
+
+.q-img-prev {
+    max-height: 90px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+@media (max-width: 520px) {
+    .q-flex {
+        flex-direction: column-reverse;
+    }
+    .q-img {
+        width: 160px;
+        max-width: 60%;
+    }
+}
+
+
+/* ===== مؤقت الامتحان ===== */
+
+.timer {
+    position: sticky;
+    top: .5rem;
+    z-index: 10;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: .6rem;
+    margin-bottom: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--primary);
+    border-radius: 12px;
+    color: var(--primary-dark);
+}
+
+.timer.low {
+    border-color: var(--bad-line);
+    color: #c0392b;
+    background: var(--bad-bg);
+}

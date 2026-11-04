@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>تعديل الأسئلة</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="questions">
+    <main class="card narrow" id="adminLogin">
+        <h1>تعديل الأسئلة</h1>
+        <label for="adminPass">كلمة مرور المسؤول</label>
+        <input id="adminPass" type="password">
+        <p id="adminMsg" class="msg" role="status"></p>
+        <button class="btn primary" id="adminEnter" type="button">دخول</button>
+        <a class="link" href="index.html">رجوع</a>
+    </main>
+
+    <div id="adminPanel" hidden>
+        <header class="topbar">
+            <strong>تعديل أسئلة الكويز</strong>
+            <span>
+        <a class="link" href="admin.html">لوحة المسؤول</a>
+        <a class="link" href="index.html">صفحة الطلاب</a>
+      </span>
+        </header>
+        <main class="wrap">
+            <label for="examPick">اختر الامتحان اللي هتعدّل أسئلته</label>
+            <select id="examPick"></select>
+            <div id="editor" style="margin-top:1rem"></div>
+            <div class="actions">
+                <button class="btn ghost big" id="addQ" type="button">إضافة سؤال</button>
+                <button class="btn primary big" id="saveQ" type="button">حفظ التغييرات</button>
+            </div>
+            <p id="saveMsg" class="msg center" role="status"></p>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

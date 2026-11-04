@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>الكويز</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="quiz">
+    <header class="topbar">
+        <strong id="studentName"></strong>
+        <button class="btn ghost" id="logoutBtn" type="button">خروج</button>
+    </header>
+    <main class="wrap">
+        <h1 id="examTitle"></h1>
+        <a class="link" href="exams.html" style="margin:0 0 1rem">← الرجوع للامتحانات</a>
+        <div id="timer" class="timer" hidden></div>
+        <div id="result" class="result" hidden></div>
+        <div id="questions"></div>
+        <div class="actions">
+            <button class="btn primary big" id="gradeBtn" type="button">تصحيح الامتحان</button>
+            <button class="btn ghost big" id="retryBtn" type="button" hidden>إعادة الامتحان</button>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
