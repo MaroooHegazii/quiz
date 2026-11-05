@@ -296,6 +296,41 @@ function initAdmin() {
   setupAdminLogin(load);
   $("#refreshBtn").onclick = () => load();
 
+  /* ---- تصدير Excel (ملف CSV بيفتح في Excel بالعربي صح) ---- */
+  const cell = (v) => {
+    let s = String(v ?? "");
+    if (/^[=+\-@\t\r]/.test(s)) s = "'" + s; // حماية من الصيغ الخبيثة
+    return '"' + s.replace(/"/g, '""') + '"';
+  };
+  const phoneCell = (p) => '="' + String(p).replace(/[^0-9]/g, "") + '"'; // يحافظ على الصفر في الأول
+  const pad = (n) => String(n).padStart(2, "0");
+  const fmtDate = (d) => { const x = new Date(d); return `${x.getFullYear()}-${pad(x.getMonth() + 1)}-${pad(x.getDate())} ${pad(x.getHours())}:${pad(x.getMinutes())}`; };
+  function downloadCsv(name, rows) {
+    const text = "\uFEFF" + rows.map((r) => r.join(",")).join("\r\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([text], { type: "text/csv;charset=utf-8" }));
+    a.download = name + "-" + new Date().toISOString().slice(0, 10) + ".csv";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }
+  $("#exportStudents").onclick = () => {
+    if (!cache) return;
+    const rows = [["الاسم", "رقم التليفون", "الحالة", "عدد المحاولات"].map(cell)];
+    cache.students.forEach((s) => rows.push([cell(s.name), phoneCell(s.phone), cell(s.approved ? "مقبول" : "معلّق"), cell(s.results.length)]));
+    downloadCsv("الطلاب", rows);
+  };
+  $("#exportResults").onclick = () => {
+    if (!cache) return;
+    const exName = (id) => (cache.exams.find((x) => x.id === id) || {}).name || "امتحان قديم";
+    const rows = [["الاسم", "رقم التليفون", "الامتحان", "الدرجة", "من", "النسبة %", "التاريخ", "الأسئلة الغلط"].map(cell)];
+    cache.students.forEach((s) => s.results.forEach((r) => rows.push([
+      cell(s.name), phoneCell(s.phone), cell(exName(r.examId)), cell(r.score), cell(r.total),
+      cell(r.total ? Math.round(r.score / r.total * 100) : 0), cell(fmtDate(r.date)),
+      cell((r.wrong || []).map((n) => n + 1).join(" - "))
+    ])));
+    downloadCsv("النتائج", rows);
+  };
+
   async function load() {
     let d;
     try { d = await rpc("admin_overview", { p_token: adminToken() }); }
