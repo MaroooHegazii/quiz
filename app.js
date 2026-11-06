@@ -192,10 +192,10 @@ async function initQuiz() {
       <section class="q" data-i="${i}">
         <div class="q-flex">
           <div class="q-main">
-            <h3>${i + 1}. ${esc(q.text)}</h3>
+            <h3 dir="auto">${i + 1}. ${esc(q.text)}</h3>
             ${q.options.map((o, j) => `
               <label class="opt" data-j="${j}">
-                <input type="radio" name="q${i}" value="${j}"> <span>${esc(o)}</span><span class="mark"></span>
+                <input type="radio" name="q${i}" value="${j}"> <span dir="auto">${esc(o)}</span><span class="mark"></span>
               </label>`).join("")}
           </div>
           ${q.img ? `<img class="q-img" src="${esc(q.img)}" alt="">` : ""}
@@ -437,10 +437,10 @@ function initAdmin() {
       <section class="q">
         <div class="q-flex">
           <div class="q-main">
-            <h3>${i + 1}. ${esc(q.text)}</h3>
+            <h3 dir="auto">${i + 1}. ${esc(q.text)}</h3>
             ${q.options.map((o, j) => j === q.correct
-              ? `<div class="opt correct"><span>${esc(o)}</span><span class="mark">✓</span></div>`
-              : `<div class="opt"><span>${esc(o)}</span></div>`).join("")}
+              ? `<div class="opt correct"><span dir="auto">${esc(o)}</span><span class="mark">✓</span></div>`
+              : `<div class="opt"><span dir="auto">${esc(o)}</span></div>`).join("")}
           </div>
           ${q.img ? `<img class="q-img" src="${esc(q.img)}" alt="">` : ""}
         </div>
@@ -536,7 +536,7 @@ function initQuestions() {
         <div class="ed-head"><strong>سؤال ${i + 1}</strong>
           <button class="btn danger" data-act="delQ" type="button">حذف السؤال</button></div>
         <label>نص السؤال</label>
-        <textarea data-f="text">${esc(q.text)}</textarea>
+        <textarea data-f="text" dir="auto">${esc(q.text)}</textarea>
         <label>صورة بجانب السؤال <span class="small">(اختياري)</span></label>
         <div class="img-ed">
           ${q.img ? `<img class="q-img-prev" src="${esc(q.img)}" alt=""><button class="btn danger" data-act="delImg" type="button">حذف الصورة</button>` : ""}
@@ -546,7 +546,7 @@ function initQuestions() {
         ${q.options.map((o, j) => `
           <div class="ed-opt" data-j="${j}">
             <input type="radio" name="c${i}" data-f="correct" ${q.correct === j ? "checked" : ""}>
-            <input type="text" data-f="opt" value="${esc(o)}" placeholder="اختيار ${j + 1}">
+            <input type="text" data-f="opt" dir="auto" value="${esc(o)}" placeholder="اختيار ${j + 1}">
             <button class="btn danger" data-act="delOpt" type="button">×</button>
           </div>`).join("")}
         <button class="btn ghost" data-act="addOpt" type="button">إضافة اختيار</button>
